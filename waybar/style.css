@@ -1,0 +1,59 @@
+* {
+	font-family: "JetBrains Mono", "Font Awesome 6 Free", "Font Awesome 6 Free Solid", sans-serif;
+	font-size: 13px;
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+}
+
+window#waybar {
+	background: #000000;
+	color: #ffffff;
+}
+
+/* Workspaces */
+#workspaces button {
+	padding: 0 8px;
+	background: transparent;
+	color: #ffffff;
+}
+
+#workspaces button.focused {
+	background: #ffffff;
+	color: #000000;
+}
+
+#workspaces button:hover {
+	background: #333333;
+	box-shadow: none;
+}
+
+#workspaces button.urgent {
+	background: #ff5555;
+	color: #000000;
+}
+
+/* Right-side modules */
+#pulseaudio,
+#network,
+#backlight,
+#battery,
+#clock {
+	padding: 0 10px;
+	color: #ffffff;
+}
+
+/* Dimmed when off */
+#pulseaudio.muted,
+#network.disconnected {
+	color: #777777;
+}
+
+/* Low battery */
+#battery.warning:not(.charging) {
+	color: #ffb86c;
+}
+
+#battery.critical:not(.charging) {
+	color: #ff5555;
+}

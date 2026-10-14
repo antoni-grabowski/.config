@@ -2,17 +2,54 @@
 	"layer": "top",
 	"modules-left": ["sway/workspaces"],
 	// "modules-center": ["sway/window"],
-	"modules-right": ["battery", "clock", ""],
+	"modules-right": ["pulseaudio", "network", "backlight", "battery", "clock"],
+
 	"sway/window": {
 		"max-length": 50
 	},
-	"battery": {
-		"format": "{capacity}% {icon}",
-		"format-icons": ["", "", "", "", ""]
+
+	// Volume + microphone
+	"pulseaudio": {
+		"format": "{volume}% {icon}   {format_source}",
+		"format-muted": "\uf6a9   {format_source}",
+		"format-source": "{volume}% \uf130",
+		"format-source-muted": "\uf131",
+		"format-icons": {
+			"default": ["\uf026", "\uf027", "\uf028"]
+		},
+		"scroll-step": 5,
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 	},
+
+	// Internet connection
+	"network": {
+		"format-wifi": "{essid} \uf1eb",
+		"format-ethernet": "wired \uf6ff",
+		"format-disconnected": "offline",
+		"tooltip-format": "{ifname}: {ipaddr}",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%): {ipaddr}"
+	},
+
+	// Brightness (scroll to change)
+	"backlight": {
+		"format": "{percent}% \uf185",
+		"on-scroll-up": "brightnessctl set 5%+",
+		"on-scroll-down": "brightnessctl set 5%-"
+	},
+
+	"battery": {
+		"states": {
+			"warning": 25,
+			"critical": 10
+		},
+		"format": "{capacity}% {icon}",
+		"format-charging": "{capacity}% \uf0e7",
+		"format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+	},
+
 	"clock": {
+		"format": "{:%H:%M}",
 		"format-alt": "{:%a, %d. %b  %H:%M}"
 	}
 }
-
-// volume/microphone, internet connection, brightness, battery, clock

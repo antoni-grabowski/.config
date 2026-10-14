@@ -2,7 +2,12 @@ exec waybar
 exec nm-applet
 exec blueman-applet
 
+bindswitch lid:on exec swaylock --color 000000 -f
+
 default_border pixel 1
+default_floating_border pixel 1
+
+client.focused #ffffff #ffffff #000000 #ffffff #ffffff
 
 # Default config for sway
 #
@@ -28,6 +33,8 @@ set $menu wmenu-run
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
 #output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output HDMI-A-1 mode 1920x1080@144Hz position 0,-1080
+output eDP-1 mode 1920x1200@60Hz scale 1.5 position 320,0
 #
 # Example configuration:
 #
@@ -227,8 +234,7 @@ bindsym $mod+r mode "resize"
 
     # Special key to take a screenshot with grim
     # bindsym Print exec grim
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
-
+    bindsym $mod+Shift+s exec mkdir -p ~/Screenshots && shot=~/Screenshots/$(date +%F_%H-%M-%S).png && grim -g "$(slurp)" "$shot" && wl-copy < "$shot"
 #
 # Status Bar:
 #
