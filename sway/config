@@ -2,6 +2,17 @@ exec waybar
 exec nm-applet
 exec blueman-applet
 
+workspace 1 output HDMI-A-1 eDP-1
+workspace 2 output HDMI-A-1 eDP-1
+workspace 3 output HDMI-A-1 eDP-1
+workspace 4 output HDMI-A-1 eDP-1
+workspace 5 output HDMI-A-1 eDP-1
+workspace 6 output eDP-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+workspace 10 output eDP-1
+
 bindswitch lid:on exec swaylock --color 000000 -f
 
 default_border pixel 1
