@@ -3,5 +3,7 @@ Sway
 Neovim
 Foot
 Dmenu
-Swaylock + swayidle
+Swaylock + swayidle + swaybg
 Waybar
+yazi
+greetd + tuigreet
